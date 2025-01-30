@@ -6,10 +6,7 @@ import Link from '@components/Link.astro'
 import BackToPrev from '@components/BackToPrev.astro'
 import { INVESTMENTS } from '@consts'
 
-const collection = (await getCollection('investments')).sort(
-  (a, b) =>
-    new Date(b.data.dateStart).valueOf() - new Date(a.data.dateStart).valueOf()
-)
+const collection = await getCollection('investments')
 
 const investments = await Promise.all(
   collection.map(async (item) => {
