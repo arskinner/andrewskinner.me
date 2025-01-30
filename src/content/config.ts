@@ -20,6 +20,14 @@ const work = defineCollection({
   }),
 });
 
+const investments = defineCollection({
+  type: "content",
+  schema: z.object({
+    company: z.string(),
+    url: z.string(),
+  }),
+});
+
 const projects = defineCollection({
   type: "content",
   schema: z.object({
@@ -32,4 +40,4 @@ const projects = defineCollection({
   }),
 });
 
-export const collections = { blog, work, projects };
+export const collections = { blog, work, projects, investments };
