@@ -14,11 +14,6 @@ export const HOME: Metadata = {
   DESCRIPTION: "Andrew Skinner is a founder and angel investor residing in Los Angeles, CA.",
 };
 
-export const BLOG: Metadata = {
-  TITLE: "Blog",
-  DESCRIPTION: "A collection of articles on topics I am passionate about.",
-};
-
 export const WORK: Metadata = {
   TITLE: "Work",
   DESCRIPTION: "Where I have worked and what I have done.",
