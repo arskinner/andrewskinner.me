@@ -5,14 +5,25 @@ import Container from '@components/Container.astro'
 import { dateRange } from '@lib/utils'
 import { WORK } from '@consts'
 
-const collection = (await getCollection('work')).sort((a, b) =>
+const workCollection = (await getCollection('work')).sort((a, b) =>
   a.data.dateEnd === 'Present'
     ? -1
     : new Date(b.data.dateEnd).valueOf() - new Date(a.data.dateEnd).valueOf()
 )
 
 const work = await Promise.all(
-  collection.map(async (item) => {
+  workCollection.map(async (item) => {
+    const { Content } = await item.render()
+    return { ...item, Content }
+  })
+)
+
+const projectCollection = (await getCollection('projects')).filter(
+  (project) => !project.data.draft
+)
+
+const projects = await Promise.all(
+  projectCollection.map(async (item) => {
     const { Content } = await item.render()
     return { ...item, Content }
   })
@@ -30,21 +41,40 @@ const work = await Promise.all(
               <div class="text-sm opacity-75">
                 {dateRange(entry.data.dateStart, entry.data.dateEnd)}
               </div>
-              <div class="font-semibold text-black dark:text-white">
+              <div class="font-semibold text-lg text-black dark:text-white">
                 {entry.data.company}
               </div>
               <div class="text-sm opacity-75">{entry.data.role}</div>
               <article>
                 <entry.Content />
               </article>
+
+              {entry.data.showProjects && (
+                <div class="mt-4 mb-4 border-l-2 border-slate-300 dark:border-white dark:border-opacity-25 pl-4">
+                  <div class="font-semibold text-black dark:text-white mb-4">
+                    Select Projects
+                  </div>
+
+                  {projects.map((project) => (
+                    <div class="mb-4">
+                      <div class="text-black mb-2 dark:text-white">
+                        {project.data.title}
+                      </div>
+                      <div class="text-md">
+                        <project.Content />
+                      </div>
+                      <div class="mt-2 text-sm opacity-75">
+                        Technology:
+                        <span class="italic">{project.data.technology}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </li>
           ))
         }
       </ul>
-      <!--
-      <ul class="animate flex flex-col gap-4">
-
-      </ul> -->
     </div>
   </Container>
 </PageLayout>
