@@ -71,3 +71,24 @@ html #back-to-top {
 html.scrolled #back-to-top {
   @apply opacity-100 pointer-events-auto;
 }
+
+@media print {
+  body, header {
+    @apply bg-white dark:bg-white;
+    @apply text-black dark:text-black;
+  }
+
+  footer {
+    @apply hidden;
+  }
+
+  main {
+    @apply flex-1 py-16;
+  }
+
+  article {
+    @apply prose-headings:font-semibold prose-p:font-sans;
+  }
+}
+
+@page { size: auto; margin: 0mm; }
