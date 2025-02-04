@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content'
 import PageLayout from '@layouts/PageLayout.astro'
 import Container from '@components/Container.astro'
 import { dateRange } from '@lib/utils'
-import { WORK } from '@consts'
+import { WORK, SITE, SOCIALS, EDUCATION } from '@consts'
 
 const workCollection = (await getCollection('work')).sort((a, b) =>
   a.data.dateEnd === 'Present'
@@ -28,36 +28,73 @@ const projects = await Promise.all(
     return { ...item, Content }
   })
 )
+
+const LINKEDIN = SOCIALS.find((social) => social.NAME === 'linkedin')?.HREF
 ---
 
 <PageLayout title={WORK.TITLE} description={WORK.DESCRIPTION}>
   <Container>
-    <div class="space-y-10">
-      <div class="animate font-semibold text-black dark:text-white">Work</div>
+    <div class="animate space-y-4">
+      <div
+        class="screen:hidden text-center border-b-2 border-gray-300 dark:border-white dark:border-opacity-25 pb-2"
+      >
+        <h1 class="text-xl font-bold">{SITE.NAME}</h1>
+        <p class="text-sm text-gray-500">
+          <a href={`mailto:${SITE.EMAIL}`} class="text-blue-500">{SITE.EMAIL}</a
+          >
+          | LinkedIn: <a href={LINKEDIN} class="text-blue-500">arskinner</a>
+        </p>
+      </div>
+      <div class="screen:hidden space-y-2">
+        <h2 class="text-md font-semibold">CTO / Head of Product</h2>
+        <p class="text-md">
+          {WORK.BIO}
+        </p>
+        <h3 class="text-md font-semibold">Areas of Expertise</h3>
+        <ul class="list-disc list-inside grid grid-cols-3">
+          {
+            WORK.EXPERTISE.map((expertise) => (
+              <li class="text-sm break-inside-avoid">{expertise}</li>
+            ))
+          }
+        </ul>
+      </div>
+      <div
+        class="animate font-semibold text-black dark:text-white border-b-2 border-black dark:border-white dark:border-opacity-25 pb-2"
+      >
+        Professional Experience
+      </div>
       <ul class="flex flex-col space-y-4">
         {
           work.map((entry) => (
             <li class="animate">
-              <div class="text-sm opacity-75">
-                {dateRange(entry.data.dateStart, entry.data.dateEnd)}
+              <div class="flex justify-between">
+                <div>
+                  <div class="font-semibold text-lg text-black dark:text-white">
+                    {entry.data.company}
+                    <span class="text-sm font-normal opacity-50">
+                      {entry.data.location}
+                    </span>
+                  </div>
+                  <div class="text-sm opacity-75">{entry.data.role}</div>
+                </div>
+                <div class="text-sm opacity-75">
+                  {dateRange(entry.data.dateStart, entry.data.dateEnd)}
+                </div>
               </div>
-              <div class="font-semibold text-lg text-black dark:text-white">
-                {entry.data.company}
-              </div>
-              <div class="text-sm opacity-75">{entry.data.role}</div>
               <article>
                 <entry.Content />
               </article>
 
               {entry.data.showProjects && (
-                <div class="mt-4 mb-4 border-l-2 border-slate-300 dark:border-white dark:border-opacity-25 pl-4 print:pl-0 print:border-t-2 print:border-l-0 print:pt-4 print:border-b-2 print:pb-2 print:border-black">
+                <div class="mt-4 mb-4 border-l-2 border-slate-300 dark:border-white dark:border-opacity-25 pl-4 print:pl-0 print:border-t-2 print:border-l-0 print:pt-4 print:border-b-2 print:pb-2 print:border-gray-300">
                   <div class="font-semibold text-black dark:text-white mb-4">
                     Select Projects
                   </div>
 
                   {projects.map((project) => (
                     <div class="mb-4">
-                      <div class="text-black mb-2 dark:text-white">
+                      <div class="text-black dark:text-white">
                         {project.data.title}
                       </div>
                       <div class="text-md">
@@ -74,6 +111,27 @@ const projects = await Promise.all(
             </li>
           ))
         }
+      </ul>
+      <div
+        class="animate font-semibold text-black dark:text-white border-b-2 border-black dark:border-white dark:border-opacity-25 pb-2"
+      >
+        Education
+      </div>
+      <ul class="flex flex-col space-y-4">
+        <li class="animate">
+          <div class="text-sm opacity-75">
+            {EDUCATION.YEAR}
+          </div>
+          <div class="font-semibold text-lg text-black dark:text-white">
+            {EDUCATION.SCHOOL}
+          </div>
+          <div class="text-sm opacity-75">
+            {EDUCATION.CONCENTRATION}
+            <br />
+            <em>{EDUCATION.HONORS}</em>
+          </div>
+          <article></article>
+        </li>
       </ul>
     </div>
   </Container>

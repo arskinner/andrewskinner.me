@@ -1,5 +1,6 @@
 ---
 company: "PurposeLab"
+location: "Los Angeles, CA"
 role: "Co-founder & CTO"
 dateStart: "01/01/2010"
 dateEnd: "Present"

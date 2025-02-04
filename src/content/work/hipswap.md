@@ -1,5 +1,6 @@
 ---
 company: "HipSwap"
+location: "Santa Monica, CA"
 role: "Co-founder & CTO"
 dateStart: "01/01/2011"
 dateEnd: "06/01/2014"

@@ -17,6 +17,25 @@ export const HOME: Metadata = {
 export const WORK: Metadata = {
   TITLE: "Work",
   DESCRIPTION: "Where I have worked and what I have done.",
+  BIO: "Product and technology leader with 20+ years of experience building successful, scalable, products and teams for early stage startups up to Fortune 100 companies. Proven track record of innovative technology thinking, strategic product planning, and building profitable businesses in a wide range of industries.",
+  EXPERTISE: [
+    "Product Management",
+    "Technology Strategy",
+    "Remote Teams",
+    "Systems Design",
+    "DevOps & CI/CD",
+    "Infrastructure & Scaling",
+    "Serverless Architecture",
+    "Mobile Development",
+    "VOD & Streaming",
+  ],
+};
+
+export const EDUCATION: Metadata = {
+  SCHOOL: "Brown University",
+  YEAR: "2008",
+  CONCENTRATION: "B.A. Commerce, Organizations, and Entrepreneurship",
+  HONORS: "Magna Cum Laude",
 };
 
 export const PROJECTS: Metadata = {
@@ -33,5 +52,5 @@ export const SOCIALS: Socials = [
   {
     NAME: "linkedin",
     HREF: "https://www.linkedin.com/in/arskinner",
-  }
+  },
 ];

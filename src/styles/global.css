@@ -30,7 +30,7 @@ header {
 }
 
 main {
-  @apply flex-1 py-32;
+  @apply flex-1 py-16;
 }
 
 footer {
@@ -73,17 +73,17 @@ html.scrolled #back-to-top {
 }
 
 @media print {
-  body, header {
+  body {
     @apply bg-white dark:bg-white;
     @apply text-black dark:text-black;
   }
 
-  footer {
+  header, footer {
     @apply hidden;
   }
 
   main {
-    @apply flex-1 py-16;
+    @apply flex-1 py-0;
   }
 
   article {
@@ -91,4 +91,4 @@ html.scrolled #back-to-top {
   }
 }
 
-@page { size: auto; margin: 0mm; }
+@page { size: auto; margin: 8mm 4mm; }

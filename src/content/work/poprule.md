@@ -1,5 +1,6 @@
 ---
 company: "PopRule"
+location: "Santa Monica, CA"
 role: "Lead Engineer"
 dateStart: "05/01/2008"
 dateEnd: "12/30/2010"
