@@ -12,6 +12,20 @@ export type Metadata = {
   DESCRIPTION: string;
 };
 
+export type Resume = {
+  TITLE: string,
+  DESCRIPTION: string,
+  BIO: string,
+  EXPERTISE: string[],
+}
+
+export type Education = {
+  SCHOOL: string,
+  YEAR: string,
+  CONCENTRATION: string,
+  HONORS: string,
+}
+
 export type Socials = {
   NAME: string;
   HREF: string;

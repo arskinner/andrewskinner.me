@@ -1,4 +1,4 @@
-import type { Site, Metadata, Socials } from "@types";
+import type { Site, Metadata, Socials, Resume, Education } from "@types";
 
 export const SITE: Site = {
   YEAR: new Date().getFullYear(),
@@ -14,7 +14,7 @@ export const HOME: Metadata = {
   DESCRIPTION: "Andrew Skinner is a founder and angel investor residing in Los Angeles, CA.",
 };
 
-export const WORK: Metadata = {
+export const WORK: Resume = {
   TITLE: "Work",
   DESCRIPTION: "Where I have worked and what I have done.",
   BIO: "Product and technology leader with 20+ years of experience building successful, scalable, products and teams for early stage startups up to Fortune 100 companies. Proven track record of innovative technology thinking, strategic product planning, and building profitable businesses in a wide range of industries.",
@@ -31,7 +31,7 @@ export const WORK: Metadata = {
   ],
 };
 
-export const EDUCATION: Metadata = {
+export const EDUCATION: Education = {
   SCHOOL: "Brown University",
   YEAR: "2008",
   CONCENTRATION: "B.A. Commerce, Organizations, and Entrepreneurship",
